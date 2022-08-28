@@ -1,8 +1,23 @@
 package TelaDeCadastro.model;
 
-public class Pessoa {
-	
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+@SequenceGenerator(name="seq_usuario", sequenceName = "seq_usuario", allocationSize = 1, initialValue = 1)
+public class Pessoa implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
 	private Long id;
+	
 	private String nome;
 	private String email;
 	private String cargo;
@@ -11,9 +26,6 @@ public class Pessoa {
 	private boolean deficiencia;
 	private double salario;
 	private String rede_social;
-	private byte[] curriculo;
-	private String nomeFileCurriculo;
-	private String tipoFileCurriculo;
 	
 	
 	public Long getId() {
@@ -70,24 +82,7 @@ public class Pessoa {
 	public void setRede_social(String rede_social) {
 		this.rede_social = rede_social;
 	}
-	public byte[] getCurriculo() {
-		return curriculo;
-	}
-	public void setCurriculo(byte[] curriculo) {
-		this.curriculo = curriculo;
-	}
-	public String getNomeFileCurriculo() {
-		return nomeFileCurriculo;
-	}
-	public void setNomeFileCurriculo(String nomeFileCurriculo) {
-		this.nomeFileCurriculo = nomeFileCurriculo;
-	}
-	public String getTipoFileCurriculo() {
-		return tipoFileCurriculo;
-	}
-	public void setTipoFileCurriculo(String tipoFileCurriculo) {
-		this.tipoFileCurriculo = tipoFileCurriculo;
-	}
+	
 	
 	
 	
